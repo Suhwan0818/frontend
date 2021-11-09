@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Display = styled.div`
+const DisplayPresenter = styled.div`
   width: 100%;
   height: 30%;
   border-radius: 0.75rem 0.75rem 0 0;
@@ -8,7 +8,7 @@ const Display = styled.div`
   padding-bottom: 1rem;
 `;
 
-const CurrentCal = styled.div`
+const CurrentCalPresenter = styled.div`
   height: 2rem;
   width: 95%;
   text-align: right;
@@ -17,7 +17,7 @@ const CurrentCal = styled.div`
   font-size: 2rem;
 `;
 
-const ResultCal = styled.div`
+const ResultCalPresenter = styled.div`
   height: 3rem;
   width: 95%;
   text-align: right;
@@ -26,4 +26,4 @@ const ResultCal = styled.div`
   font-size: 3rem;
 `;
 
-export {Display, CurrentCal, ResultCal};
+export {DisplayPresenter, CurrentCalPresenter, ResultCalPresenter};

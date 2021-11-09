@@ -1,38 +1,37 @@
-import React from 'react';
-import styled from 'styled-components';
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-unused-vars */
+import React, {useState} from 'react';
 import GlobalStyle from './style/Global';
-import {
-  CurrentCal,
-  ResultCal,
-  Display,
-} from './components/Presenter/DisplayPresenter';
 // import ButtonPresenter from './components/Presenter/ButtonPresenter';
-import Control from './components/Presenter/ControlPresenter';
-
-const Calculator = styled.div`
-  width: 20rem;
-  height: 30rem;
-  border-radius: 0.75rem;
-  background-color: white;
-
-  display: flex;
-  flex-direction: column;
-
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-`;
+import ControlContainer from './components/Container/ControlContainer';
+import Calculator from './components/Presenter/CalculatorPresenter';
+import DisplayContainer from './components/Container/DisplayContainer';
 
 function App() {
+  const [currentCal, setcurrentCal] = useState(['1', '+', '9']);
+  const [resultCal, setresultCal] = useState('0');
+
+  const tempChange = e => {
+    const value = e.target.value;
+    switch (value) {
+      case 'C':
+        setresultCal(0);
+        break;
+
+      case '=':
+        setresultCal('=');
+        break;
+
+      default:
+        setresultCal(value);
+        break;
+    }
+  };
   return (
     <>
       <Calculator>
-        <Display>
-          <CurrentCal>1+1</CurrentCal>
-          <ResultCal>2</ResultCal>
-        </Display>
-        <Control />
+        <DisplayContainer CurrentCal={currentCal} ResultCal={resultCal} />
+        <ControlContainer calculateFunc={tempChange} />
       </Calculator>
       <GlobalStyle />
     </>
