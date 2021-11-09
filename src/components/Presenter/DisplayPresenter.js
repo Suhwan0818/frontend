@@ -5,6 +5,7 @@ const Display = styled.div`
   height: 30%;
   border-radius: 0.75rem 0.75rem 0 0;
   background-color: ${props => props.theme.Colors.displayColor};
+  padding-bottom: 1rem;
 `;
 
 const CurrentCal = styled.div`

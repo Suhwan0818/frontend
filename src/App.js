@@ -1,9 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import GlobalStyle from './style/Global';
-import {CurrentCal, ResultCal, Display} from './components/Display';
-// import ButtonPresenter from './components/ButtonPresenter';
-import Control from './components/Control';
+import {
+  CurrentCal,
+  ResultCal,
+  Display,
+} from './components/Presenter/DisplayPresenter';
+// import ButtonPresenter from './components/Presenter/ButtonPresenter';
+import Control from './components/Presenter/ControlPresenter';
 
 const Calculator = styled.div`
   width: 20rem;
