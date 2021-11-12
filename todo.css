@@ -1,0 +1,47 @@
+.name {
+  width: 30rem;
+  height: 45rem;
+  text-align: center;
+  background-color: skyblue;
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10%;
+  font-size: 2rem;
+  border-radius: 0.75rem 0.75rem 0.75rem 0.75rem;
+}
+
+.clearContainer {
+  position: fixed;
+  bottom: 15%;
+  right: 0;
+  font-size: 1.5rem;
+  margin-right: 5%;
+  color: darkred;
+}
+
+.inputArea {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 5%;
+  padding-top: 5%;
+  background-color: black;
+  border-radius: 0 0 0.75rem 0.75rem;
+}
+
+ul {
+  list-style: none;
+}
+
+.delete {
+  float: left;
+  color: darkred;
+  cursor: pointer;
+}
+
+.checkbox {
+  position: relative;
+  bottom: 4px;
+}
