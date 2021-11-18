@@ -1,7 +1,7 @@
 /* eslint-disable import/order */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-unused-vars */
-import React, {useState} from 'react';
+import React, {useState, useEffect, useCallback, useRef} from 'react';
 import GlobalStyle from './style/Global';
 // import ButtonPresenter from './components/Presenter/ButtonPresenter';
 import ControlContainer from './components/Container/ControlContainer';
@@ -18,8 +18,16 @@ function App() {
   const [currentCal, setcurrentCal] = useState([]);
   const [resultCal, setresultCal] = useState('0');
 
-  const tempChange = e => {
+  const stateRef = useRef([]);
+  useEffect(() => {
+    stateRef.current[0] = currentCal;
+    stateRef.current[1] = resultCal;
+  }, [currentCal, resultCal]);
+
+  const tempChange = useCallback(e => {
     const value = e.target.value;
+    const currentCalRef = stateRef.current[0];
+    const resultCalRef = stateRef.current[1];
     switch (value) {
       case 'C':
         setresultCal(0);
@@ -28,17 +36,17 @@ function App() {
 
       case '+/-':
         if (positiveNegative === true) {
-          setresultCal(-resultCal);
+          setresultCal(-resultCalRef);
           positiveNegative = false;
         } else {
-          setresultCal(+resultCal);
+          setresultCal(+resultCalRef);
           positiveNegative = true;
         }
         break;
 
       case '=':
         try {
-          setresultCal(evaluate(currentCal + resultCal));
+          setresultCal(evaluate(currentCalRef + resultCalRef));
           setcurrentCal('');
           numExist = true;
           i = 1;
@@ -48,40 +56,40 @@ function App() {
         }
 
       case '+':
-        if (resultCal === '0') {
+        if (resultCalRef === '0') {
           break;
         } else {
-          setcurrentCal(`${resultCal}+`);
+          setcurrentCal(`${resultCalRef}+`);
           numExist = false;
           i = 1;
           break;
         }
 
       case '-':
-        if (resultCal === '0') {
+        if (resultCalRef === '0') {
           break;
         } else {
-          setcurrentCal(`${resultCal}-`);
+          setcurrentCal(`${resultCalRef}-`);
           numExist = false;
           i = 1;
           break;
         }
 
       case 'x':
-        if (resultCal === '0') {
+        if (resultCalRef === '0') {
           break;
         } else {
-          setcurrentCal(`${resultCal}*`);
+          setcurrentCal(`${resultCalRef}*`);
           numExist = false;
           i = 1;
           break;
         }
 
       case '/':
-        if (resultCal === '0') {
+        if (resultCalRef === '0') {
           break;
         } else {
-          setcurrentCal(`${resultCal}/`);
+          setcurrentCal(`${resultCalRef}/`);
           numExist = false;
           i = 1;
           break;
@@ -89,16 +97,16 @@ function App() {
       case 'Del':
         setresultCal(' ');
         for (i = 0; i < numArray.length - 1; i += 1) {
-          setresultCal(resultCal + numArray[i]);
+          setresultCal(resultCalRef + numArray[i]);
         }
         break;
 
       default:
-        if (resultCal === '0') {
+        if (resultCalRef === '0') {
           setresultCal(value);
           numArray[0] = value;
         } else if (numExist === true) {
-          setresultCal(resultCal + value);
+          setresultCal(resultCalRef + value);
           numArray[i] = value;
           i += 1;
         } else {
@@ -107,7 +115,7 @@ function App() {
           numExist = true;
         }
     }
-  };
+  }, []);
   return (
     <>
       <Calculator>

@@ -114,4 +114,4 @@ ControlContainer.propTypes = {
   calculateFunc: PropTypes.func.isRequired,
 };
 
-export default ControlContainer;
+export default React.memo(ControlContainer);
