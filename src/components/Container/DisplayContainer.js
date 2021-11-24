@@ -6,18 +6,18 @@ import {
   DisplayPresenter,
 } from '../Presenter/DisplayPresenter';
 
-function DisplayContainer({CurrentCal, ResultCal}) {
+function DisplayContainer({currentCal, resultCal}) {
   return (
     <DisplayPresenter>
-      <CurrentCalPresenter>{CurrentCal}</CurrentCalPresenter>
-      <ResultCalPresenter>{ResultCal}</ResultCalPresenter>
+      <CurrentCalPresenter>{currentCal}</CurrentCalPresenter>
+      <ResultCalPresenter>{resultCal}</ResultCalPresenter>
     </DisplayPresenter>
   );
 }
 
 DisplayContainer.propTypes = {
-  CurrentCal: PropTypes.array,
-  ResultCal: PropTypes.string.isRequired,
+  currentCal: PropTypes.array,
+  resultCal: PropTypes.string.isRequired,
 };
 
 export default DisplayContainer;

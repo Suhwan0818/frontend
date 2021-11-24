@@ -43,7 +43,7 @@ function ControlContainer({calculateFunc}) {
       />
       <ButtonContainer
         color="lightOrange"
-        contents="x"
+        contents="*"
         calculateFunc={calculateFunc}
       />
       <ButtonContainer
